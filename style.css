@@ -1,0 +1,926 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== DarkVeil full-page background ===== */
+#darkveil-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1;             /* content oda keezha */
+  pointer-events: none;    /* clicks content-ku poganum */
+  opacity: 0.9;
+  transition: opacity 0.4s ease;
+}
+
+/* 💡 LIGHT MODE la WebGL background almost off */
+body.light #darkveil-canvas {
+  opacity: 0;              /* full hide pannala, venumna 0.2 nu soft-a vechikkalaam */
+}
+
+/* Dark / Light body colors */
+body {
+  background: #000000;
+  color: white;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light {
+  background: #f5f5f5;
+  color: #000000;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #00C6FF, #0072FF);
+  z-index: 9999;
+}
+.icons-grid .icon {
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+.icons-grid .icon:nth-child(2) { animation-delay: 0.3s; }
+.icons-grid .icon:nth-child(3) { animation-delay: 0.6s; }
+.icons-grid .icon:nth-child(4) { animation-delay: 0.9s; }
+.icons-grid .icon:nth-child(5) { animation-delay: 1.2s; }
+.icons-grid .icon:nth-child(6) { animation-delay: 1.5s; }
+.icons-grid .icon:nth-child(7) { animation-delay: 1.8s; }
+.icons-grid .icon:nth-child(8) { animation-delay: 2.1s; }
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+
+
+/*================ NAVBAR =================*/
+/*================ NAVBAR =================*/
+
+.navbar {
+  position: fixed;             /* always top, scroll pannalum irukkum */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;               /* scrollProgress (9999) kku keezha, content mela */
+
+  width: 100%;
+  padding: 15px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(21, 21, 21, 0.7);  /* glass effect */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* light mode ku same glass effect in white */
+body.light .navbar {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: #bfbfbf;
+  text-decoration: none;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  color: #2faaff;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.contact-btn {
+  border: 1px solid #2faaff;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* light mode text colors for nav already work via .light .nav-links a etc. */
+
+/* spacer div – same height as navbar so layout correct */
+.nav-spacer {
+  height: 70px;   /* approx navbar height – adjust 60–80 if needed */
+}
+
+/*================ HERO SECTION =================*/
+.hero-section {
+  width: 100%;
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+.hero-grid {
+  width: 700px;
+  height: 700px;
+  background-image: linear-gradient(#1f1f1f 1px, transparent 1px),
+    linear-gradient(90deg, #1f1f1f 1px, transparent 1px);
+  background-size: 40px 40px;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.3;
+}
+
+.hero-content {
+  max-width: 700px;
+  z-index: 2;
+}
+
+/* Circle hover image container */
+.hero-img-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 15px;
+  cursor: pointer;
+}
+
+.hero-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Super smooth transition */
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-img {
+  z-index: 1;
+}
+
+.hero-img-hover {
+  opacity: 0;
+  z-index: 2;
+  transform: scale(1.05); /* slightly larger initially */
+}
+
+.hero-img-container:hover .hero-img-hover {
+  opacity: 1;
+  transform: scale(1); /* smooth zoom into place */
+}
+
+.hero-img-container:hover .hero-img {
+  transform: scale(1.03); /* subtle zoom for main image */
+}
+/* image up and down animation */
+.hero-img-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 15px;
+  cursor: pointer;
+  animation: floatHero 4s ease-in-out infinite;
+  box-shadow: 0 18px 40px rgba(0, 170, 255, 0.25);
+}
+
+@keyframes floatHero {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+
+
+.hero-name {
+  font-size: 58px;
+  font-weight: 800;
+  margin-bottom: 0px;
+}
+
+
+.hero-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2faaff;
+
+}
+
+.hero-text {
+  font-size: 18px;
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: 1px solid #2faaff;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+  margin-bottom: 120px;
+ 
+
+}
+
+.hero-btn:hover {
+  background: #2faaff;
+  color: black;
+}
+
+/* About */
+.About-selection{
+  width: 100%;
+  padding-top: 60px;
+  display: block;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  
+}
+.aboutt{
+  font-size: 50px;
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin-bottom: -15px;
+}
+.aboutt2{
+  background: linear-gradient(90deg, #00C6FF, #0072FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.about-text{
+  font-size: 18px;
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+.About-selection{
+  
+  padding-left: 10%;
+  padding-right: 10%;
+  z-index: 2;
+  
+}
+
+/* LIGHT MODE */
+.light {
+  background: white;
+  color: black;
+}
+.light .aboutt {
+  color: black;
+}
+
+.light .nav-links a {
+  color: black;
+}
+
+.light .hero-text {
+  color: #333;
+}
+.light .about-text {
+  color: #333;
+}
+
+.light .contact-btn,
+.light .hero-btn {
+  color: black;
+  border-color: #0077ff;
+}
+
+.light .hero-title {
+  color: #0077ff;
+}
+
+
+/*================ FOOTER =================*/
+
+.background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.socials {
+  gap: 10px;
+}
+
+.socials a {
+  font-size: 22px;
+  color: #d6dfed;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  scale: 1.1;
+}
+
+.links {
+  gap: 14px;
+}
+
+.links a {
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.links a:hover {
+  color: #0077ff;
+  
+}
+
+.legal {
+  font-size: 12px;
+  margin: 0;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(3) scaleX(2.25);
+  transform-origin: bottom;
+  box-sizing: border-box;
+  display: block;
+  pointer-events: none;
+}
+
+footer {
+  position: relative;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 370px;
+  overflow: hidden;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 30px;
+  padding-bottom: 80px;
+  padding-left: 60px;
+  width: 100%;
+  
+}
+
+@media (width > 420px) {
+  section {
+    align-items: center;
+    padding-left: 0;
+    gap: 20px;
+  }
+
+  .links {
+    gap: 20px;
+  }
+}
+/*================ FOOTER END =================*/
+
+/*================ SERVICES =================*/
+.fresh-offer-section {
+  width: 100%;
+  padding-top: 60px;
+  display: block;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+.fresh-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.fresh-heading h2 {
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.fresh-heading h2 span {
+  background: linear-gradient(90deg, #00C6FF, #0072FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fresh-heading h4 {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.fresh-heading h4::after {
+  content: '';
+  width: 60px;
+  height: 3px;
+  background: #00a01d;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.fresh-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.fresh-offer-item {
+  background: #000000;
+  padding: 40px 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 15px 25px rgba(255, 255, 255, 0.15);
+  margin-bottom: 200px;
+  
+}
+
+.fresh-offer-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 45px rgba(8, 0, 255, 0.15);
+}
+
+.fresh-icon {
+  font-size: 50px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  margin: 0 auto 25px;
+  background: #3c73ff;
+  color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+
+}
+
+.fresh-offer-item:hover .fresh-icon {
+  background: #fff;
+  color: #000000;
+  border: 2px solid #000000;
+  transform: scale(1.2);
+}
+
+.fresh-offer-item h4 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  transition: color 0.3s;
+}
+
+.fresh-offer-item p {
+  font-size: 0.95rem;
+  color: #000000;
+  line-height: 1.6;
+  transition: color 0.3s;
+  
+}
+
+.fresh-offer-item:hover h4,
+.fresh-offer-item:hover p {
+  color: #ffffff;
+}
+.light .fresh-offer-item {
+  background-color: white;
+  
+}
+.light .fresh-offer-item:hover p{
+  color:#3c73ff;
+}
+.light .fresh-offer-item h4{
+  color:#000000;
+}
+
+
+
+/*================ SERVICES END =================*/
+
+/*================ SKILLS =================*/
+.cf-holderCircle {
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    margin: 60px auto;
+    position: relative;
+}
+
+.cf-dotCircle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 100%;
+    z-index: 20;
+}
+
+.cf-dotCircle .cf-itemDot {
+    display: block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 40px;
+    z-index: 3;
+    cursor: pointer;
+    border: 2px solid #e6e6e6;
+}
+
+.cf-dotCircle .cf-itemDot .cf-forActive {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.cf-dotCircle .cf-itemDot .cf-forActive::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border: 3px solid #7d4ac7;
+    bottom: -31px;
+    left: -14px;
+    filter: blur(1px);
+    position: absolute;
+    border-radius: 100%;
+}
+
+.cf-dotCircle .cf-itemDot .cf-forActive::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    filter: blur(5px);
+    top: -15px;
+    position: absolute;
+    transform: rotate(-45deg);
+    border: 6px solid #a733bb;
+    right: -39px;
+}
+
+.cf-dotCircle .cf-itemDot.active .cf-forActive {
+    display: block;
+}
+
+.cf-round {
+    position: absolute;
+    left: 40px;
+    top: 45px;
+    width: 410px;
+    height: 410px;
+    border: 2px dotted  #00C6FF;
+    border-radius: 100%;
+    -webkit-animation: rotation 100s infinite linear;
+}
+
+.cf-dotCircle .cf-itemDot:hover,
+.cf-dotCircle .cf-itemDot.active {
+    color: #ffffff;
+    transition: 0.5s;
+    background: #3c73ff;
+    border: 2px solid #ffffff;
+    box-shadow: 0 30px 30px 0 rgba(0,0,0,0.13);
+}
+
+.cf-contentCircle {
+    width: 250px;
+    border-radius: 100%;
+    color: #222222;
+    position: relative;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cf-contentCircle .cf-CirItem {
+    border-radius: 100%;
+    color: #222222;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.5s;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    margin: auto;
+    line-height: 250px;
+}
+
+.cf-CirItem.active {
+    z-index: 1;
+    opacity: 1;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.cf-contentCircle .cf-CirItem i {
+    font-size: 180px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -90px;
+    color: #ffffff;
+    opacity: 0.1;
+}
+
+.title-box .title {
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: -1;
+}
+
+.title-box span {
+    text-shadow: 0 10px 10px rgba(255, 255, 255, 0.15);
+    font-weight: 800;
+    color:#3c73ff;
+}
+
+.title-box p {
+    font-size: 17px;
+    line-height: 2em;
+    color: white;
+    
+}
+
+.SKILLS-heading h2 {
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.SKILLS-heading h2 span {
+  background: linear-gradient(90deg, #00C6FF, #0072FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.SKILLS-heading h4 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 1px;
+  position: relative;
+}
+.SKILLS-heading h4::after {
+  content: '';
+  width: 300px;
+  height: 3px;
+  background: #00a01d;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+@media only screen and (max-width: 599px) {
+    .cf-holderCircle {
+        margin: 110px auto;
+    }
+}
+
+.light .title-box p {
+  color: #000000;
+}
+.light h4 {
+  color: #000000;
+}
+.light .title-box span{
+  color:#3c73ff;
+}
+.light .cf-contentCircle .cf-CirItem i{
+  color: #000000;
+}
+
+/* Grid container */
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 30px;
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+/* Individual icon card */
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s, background-color 0.3s;
+  cursor: pointer;
+}
+
+.icon i {
+  font-size: 50px;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+/* Icon hover */
+.icon:hover {
+  transform: translateY(-10px);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Icon colors */
+.html i { color: #E34F26; }
+.css i { color: #1572B6; }
+.js i { color: #F7DF1E; }
+
+
+/* Icon label */
+.icon span {
+  font-size: 14px;
+  margin-top: 5px;
+  
+}
+
+/* Dark/light mode toggle button */
+#toggleMode {
+  padding: 10px 20px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #444;
+  color: #fff;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+body.light-mode #toggleMode {
+  background-color: #ddd;
+  color: #000;
+}
+
+#toggleMode:hover {
+  background-color: #ff6f61;
+  color: #fff;
+}
+
+/* PHP */
+.php i { color: #777BB4; }
+
+/* MySQL & NetBeans as images */
+.icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.mysql img { filter: brightness(1) invert(1); } /* Optional for dark mode */
+
+/* Hover effect for images */
+.icon img:hover {
+  transform: scale(1.2);
+}
+i:hover {
+  transform: scale(1.2);
+}
+.icon:hover {
+  color:#3c73ff;
+ 
+  cursor: pointer;
+
+}
+.photoshop img, .premiere img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 6px;
+  transition: transform 0.3s;
+  
+}
+
+.photoshop img:hover, .premiere img:hover {
+  transform: scale(1.2);
+}
+
+
+
+/*================ SKILLS =================*/
+
+
+/*================ scroll =================*/
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#home,
+#about,
+#projects,
+#services,
+#skills,
+#contact {
+  scroll-margin-top: 90px;  /* nav height ku approx */
+}
+/* SKILLS section scroll offset (navbar keezha marama irukka) */
+/* Skills section top offset so navbar cover pannaadhu */
+#skills {
+  padding-top: 60px;      /* Heading munnadi extra space */
+  margin-top: -60px;      /* Layout height same-aa irukka negative margin */
+  scroll-margin-top: 120px; /* Link click smooth scroll-ku extra gap */
+}

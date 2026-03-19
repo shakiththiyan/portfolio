@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (latest) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Your custom CSS -->
+<link rel="stylesheet" href="style.css" />
+
+<!-- jQuery (for circular component JS) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+<div id="scrollProgress"></div>
+
+<!-- 🔥 DarkVeil WebGL background -->
+<canvas id="darkveil-canvas"></canvas>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo" id="logo"> 🙋Sh4kith </div>
+
+    <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+        <button class="contact-btn" data-target="#contact">Contact Me</button>
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+    </div>
+</nav>
+<!-- spacer to avoid content overlap -->
+<div class="nav-spacer"></div>
+<!--================ HERO SECTION =================-->
+<section id="home" class="hero-section reveal">
+
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+        <div class="hero-img-container">
+            <img src="IMG/profile1.jpg" class="hero-img" alt="profile">
+            <img src="IMG/profile2.jpg" class="hero-img-hover" alt="hover-image">
+        </div>
+        <h1 class="hero-name">SHAKITHTHIYAN</h1>
+        <h2 class="hero-title"> <span id="typedText">DEVELOPER & DISIGNER </span><br><span>🧑‍💻🖌️🌐⚙️</span></h2>
+        <p class="hero-text">
+            As a passionate data scientist, with expertise in machine learning, AI,
+            and data analytics, I thrive on exploring data landscapes and uncovering
+            meaningful patterns that drive innovation.
+        </p>
+        <button class="hero-btn">Contact Me</button>
+    </div>
+</section>
+<!--================ ABOUT =================-->
+<section id="about" class="About-selection reveal">
+    <div class="about-content">
+    <h1 class="aboutt">About Me</h1>
+    <h4 class="aboutt2">Get to know me</h4>
+    <p class="about-text">
+        Hi, I’m Simiyon Shakiththiyan — a Junior Software Engineer and Full-Stack Web 
+        Developer with a strong focus on building fast, modern, and user-friendly 
+        digital experiences. I also work in IT Support & Network Operations, giving
+        me hands-on knowledge in troubleshooting, system maintenance, and real-world technical workflows.
+        <br><br>
+        With 6+ years of experience in Creative Media (Photoshop & Premiere Pro), I bring together clean code and creative design to produce visually engaging and functional solutions.
+        I enjoy blending development, design, and problem-solving to craft websites, tools, and content that feel smooth, modern, and meaningful.
+        <br><br>
+        I’m currently exploring new technologies, building full-stack projects, and open to opportunities where I can learn, contribute, and grow.
+    </p>
+    </div>
+</section>
+<!--================ SERVICES =================-->
+<section id="services" class="fresh-offer-section reveal">
+  <div class="fresh-container">
+    <div class="fresh-heading text-center">
+      <h2>What We <span>Offer</span></h2>
+      <h4>Check out our main services</h4>
+    </div>
+
+    <div class="fresh-offer-grid">
+      <!-- Item 1 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fa fa-globe"></i></div>
+        <h4>Websites Design</h4>
+        <p>Portfolio Websites <br> Business Websites <br> Blogs & News Portals</p>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fa fa-cogs"></i></div>
+        <h4>Web Applications Development</h4>
+        <p>E-commerce Platforms <br> Task & Project Management Systems <br> Booking & Appointment Systems </p>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fas fa-tasks"></i></div>
+        <h4>Tech Support</h4>
+        <p>Website Maintenance & Updates <br> Bug Fixing & Optimization <br> Management</p>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fa fa-pencil-ruler"></i></div>
+        <h4>Logo Design</h4>
+        <p>Turning plans into reality with high-quality execution.</p>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fa fa-network-wired"></i></div>
+        <h4>Networking & Server Setup</h4>
+        <p>Local Area Networking (LAN) <br> Server Setup & Administration <br> Network Security & Monitoring <br> IT Support & Troubleshooting <br> System Configuration & Maintenance</p>
+      </div>
+
+     <!-- Item 6 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fa fa-paint-brush"></i></div>
+        <h4>Graphic Design</h4>
+        <p>Design eye-catching logos <br> banners & posters <br> social media visuals.</p>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fa fa-video"></i></div>
+        <h4>Video Editing</h4>
+        <p>produce promotional videos <br> YouTube content, tutorials <br> short clips with smooth transitions.</p>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="fresh-offer-item reveal">
+        <div class="fresh-icon"><i class="fa fa-bullhorn"></i></div>
+        <h4>Promotion</h4>
+        <p>promote websites & products.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================ SKILL =================-->
+<section id="skills" class="cf-iq-features reveal">
+  <div class="container">
+    <div class="SKILLS-heading text-center">
+      <h2><span>SKILLS</span></h2>
+      <h4>Delivering Efficient Solutions In Front-End, Back-End, Hardware, Networking, and Multimedia Design.</h4>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-3 col-md-12"></div>
+      <div class="col-lg-6 col-md-12">
+        <div class="cf-holderCircle reveal">
+          <div class="cf-round"></div>
+          <div class="cf-dotCircle">
+            <span class="cf-itemDot active cf-itemDot1" data-tab="1">
+              <i class="fa-solid fa-laptop-code"></i>
+              <span class="cf-forActive"></span>
+            </span>
+            <span class="cf-itemDot cf-itemDot2" data-tab="2">
+              <i class="fa-solid fa-network-wired"></i>
+              <span class="cf-forActive"></span>
+            </span>
+            <span class="cf-itemDot cf-itemDot3" data-tab="3">
+              <i class="fa-solid fa-palette"></i>
+              <span class="cf-forActive"></span>
+            </span>
+            <span class="cf-itemDot cf-itemDot4" data-tab="4">
+              <i class="fa-solid fa-server"></i>
+              <span class="cf-forActive"></span>
+            </span>
+            <span class="cf-itemDot cf-itemDot5" data-tab="5">
+              <i class="fa-solid fa-microchip"></i>
+              <span class="cf-forActive"></span>
+            </span>
+            <span class="cf-itemDot cf-itemDot6" data-tab="6">
+              <i class="fa-solid fa-database"></i>
+              <span class="cf-forActive"></span>
+            </span>
+          </div>
+          <div class="cf-contentCircle">
+            <div class="cf-CirItem title-box active cf-CirItem1">
+              <h2 class="title"><span>Front-End Development</span></h2>
+              <p>Build interactive & responsive websites using HTML, CSS, JavaScript, and modern frameworks.</p>
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <div class="cf-CirItem title-box cf-CirItem2">
+              <h2 class="title"><span>Local Area Networking</span></h2>
+              <p>Configure, maintain, and troubleshoot wired & wireless local networks.</p>
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="cf-CirItem title-box cf-CirItem3">
+              <h2 class="title"><span>Creative Media</span></h2>
+              <p>Design graphics, edit videos, and create multimedia content using Photoshop & Premiere Pro.</p>
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <div class="cf-CirItem title-box cf-CirItem4">
+              <h2 class="title"><span>Server Administrator</span></h2>
+              <p>Manage servers, deploy applications, and monitor performance for smooth operations.</p>
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <div class="cf-CirItem title-box cf-CirItem5">
+              <h2 class="title"><span>IT Support & Maintenance</span></h2>
+              <p>Troubleshoot hardware & software issues, install systems, and perform routine maintenance.</p>
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <div class="cf-CirItem title-box cf-CirItem6">
+              <h2 class="title"><span>Back-End Development</span></h2>
+              <p>Develop server-side logic, APIs, and database management for dynamic web applications.</p>
+              <i class="fa-solid fa-database"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-12"></div>
+    </div>
+  </div>
+  <div class="icons-grid">
+    <div class="icon html reveal"><i class="fab fa-html5"></i><span>HTML5</span></div>
+    <div class="icon css reveal"><i class="fab fa-css3-alt"></i><span>CSC 3</span></div>
+    <div class="icon js reveal"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+    <!--<div class="icon react"><i class="fab fa-react"></i><span>React</span></div>-->
+    <div class="icon php reveal"><i class="fab fa-php"></i><span>PHP</span></div>
+  <div class="icon mysql reveal"><img src="https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg" alt="MySQL" /><span>MySQL</span></div>
+  <div class="icon photoshop reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop" /><span>Photoshop</span></div>
+  <div class="icon premiere reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Adobe_Premiere_Pro_CC_2026_icon.svg" alt="Premiere Pro" /><span>Premiere</span></div>
+  </div>
+</section>
+<!--================ FOOTER =================-->
+<footer id="contact" class="reveal">
+    <div class="background">
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="100%"
+          height="100%"
+          viewBox="0 0 1600 900"
+          >
+          <defs>
+            <linearGradient id="bg" x2="0%" y2="100%">
+              <stop
+                offset="0%"
+                style="stop-color: rgba(53, 78, 242, 0.6)"
+              ></stop>
+              <stop
+                offset="100%"
+                style="stop-color: rgba(38, 89, 190, 0.06)"
+              ></stop>
+            </linearGradient>
+            <path
+              id="wave"
+              fill="url(#bg)"
+              d="M-363.852,502.589c0,0,236.988-41.997,505.475,0s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z"
+            />
+          </defs>
+          <g>
+            <use xlink:href="#wave" opacity=".3">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                dur="8s"
+                calcMode="spline"
+                values="270 230; -334 180; 270 230"
+                keyTimes="0; .5; 1"
+                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                repeatCount="indefinite"
+              />
+            </use>
+            <use xlink:href="#wave" opacity=".6">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                dur="6s"
+                calcMode="spline"
+                values="-270 230;243 220;-270 230"
+                keyTimes="0; .6; 1"
+                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                repeatCount="indefinite"
+              />
+            </use>
+            <use xlink:href="#wave" opacty=".9">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                dur="4s"
+                calcMode="spline"
+                values="0 230;-140 200;0 230"
+                keyTimes="0; .4; 1"
+                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                repeatCount="indefinite"
+              />
+            </use>
+          </g>
+        </svg>
+      </div>
+    <section>
+        <ul class="socials">
+            <li><a><i class="fa-brands fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/shakiththiyan-shaki/"><i class="fa-brands fa-linkedin"></i></a></li>
+            <li><a ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/sh4kith/"><i class="fa-brands fa-instagram"></i></a></li>
+        </ul>
+        <ul class="links">
+            <li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="legal">© SHAKITHTHIYAN. All rights reserved</p>
+    </section>
+</footer>
+<script src="script.js"></script>
+<!-- DarkVeil background script (module) -->
+<script type="module" src="darkveil-background.js"></script>
+</body>
+</html>
